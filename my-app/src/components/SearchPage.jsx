@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import getResponse from '../functions/getResponse.js';
 import { useQuery } from 'react-query';
 import { useSearchContext } from '../context/SearchContext.jsx';
@@ -12,15 +12,17 @@ import ResponseDisplay from "../components/ResponseDisplay.jsx"
 
 const SearchPage = () => {
   // This hook uses state management AND hooks
-  const [searchType, setSearchType] = useState('');
+  const [searchType, setSearchType] = useState('pokemon/');
   const [searchTerm, setSearchTerm] = useState('');
   const [url, setUrl] = useState(null);
   const { searchResults, setSearchResults } = useSearchContext();
   const {favorites, addFavorite, removeFavorite } = useFavoritesContext();
 
-
-
   const baseUrl = `https://pokeapi.co/api/v2/`;
+
+  useEffect(() => {
+    console.log(url);
+  }, [url])
 
 const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => getResponse(url), {
   enabled: !!url,
@@ -37,7 +39,7 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
   value= {searchType}
   onChange={(e) => setSearchType(e.target.value)}
   >
-    <option value='pokemon-species/'>Pokemon</option>
+    <option value='pokemon/'>Pokemon</option>
     <option value='type/'>Type</option>
     <option value='ability/'>Ability</option>
     <option value='item/'>Items</option>
@@ -52,11 +54,12 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
   />
  
   <button 
-  disabled={searchTerm.length}
+  disabled={!searchTerm.length}
   onClick={(e) => {
     e.preventDefault();
     if(searchTerm.length >= 1 ) {
-      setUrl(`${searchType}${searchTerm}/`);
+      setUrl(`${searchType}${searchTerm.toLowerCase()}/`);
+      console.log(url);
     }
     }}
     >
