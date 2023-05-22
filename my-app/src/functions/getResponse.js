@@ -10,16 +10,17 @@ export default async function getResponse(searchString) {
     }
     const data = await response.json();
 
-    return {
-        abilities: data.abilities,
-        forms: data.forms,
-        game_indices: data.game_indices,
-        moves: data.moves,
-        species: data.species,
-        sprites: data.sprites,
-        stats: data.stats,
-        types: data.types
-    };
+    return data.map((val) => ({
+        abilities: val.abilities,
+        forms: val.forms,
+        game_indices: val.game_indices,
+        moves: val.moves,
+        species: val.species,
+        sprites: val.sprites,
+        stats: val.stats,
+        types: val.types
+    })
+    );
 }
 
 //pokemon/ = stats about specific abilities, moves, etc
