@@ -68,7 +68,7 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
     </form>
     {isLoading && <p>Loading...</p>}
     {error && <p>An error has occured: {error.message}</p>}
-    {isSuccess && searchTerm == 'pokemon' &&
+    {isSuccess && searchType == 'pokemon' &&
       <ResponseDisplay
       name={searchTerm}
       {...searchResults}
@@ -80,7 +80,7 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
       isFavorite={favorites.some((fav) => fav.pokemon === searchResults.pokemon)}
       />
     }
-    {isSuccess && searchTerm == 'pokemon-species' &&
+    {isSuccess && searchType == 'pokemon-species' &&
       <ResponseDisplay1/>
     }
  </div>
