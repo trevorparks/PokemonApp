@@ -22,6 +22,11 @@ export default async function getResponse(searchString) {
             types: data.types
         };
     }
+    if (searchString.search(/'pokemon-species'\b/)) {
+        return {
+            color: data.color,
+        }
+    }
 }
 
 //pokemon/ = stats about specific abilities, moves, etc

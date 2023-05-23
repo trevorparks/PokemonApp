@@ -45,6 +45,7 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
     <option value='item/'>Items</option>
     <option value='move/'>Moves</option>
     <option value='location/'>Locations</option>
+    <option value='pokemon-species/'>Pokemon-Species</option>
   </select>
     <input
     type="text"
