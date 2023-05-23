@@ -68,28 +68,17 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
     {isLoading && <p>Loading...</p>}
     {error && <p>An error has occured: {error.message}</p>}
     {isSuccess && 
-    searchResults.map((val) => (
-      <ResponseDisplay 
-      key={val.gif_id}
-      {...val}
+      <ResponseDisplay
+      name={searchTerm}
+      {...searchResults}
       // url={val.url}
       // title={val.title}
       // gif_id={val.gif_id}
-      addFavorite={() => addFavorite( { pokemon: val.abilities,
-        pokemon_forms: val.forms,
-        pokemon_game_indices: val.game_indices,
-        pokemon_moves: val.moves,
-        pokemon_species: val.species,
-        pokemon_sprites: val.sprites,
-        pokemon_stats: val.stats,
-        pokemon_types: val.types,} )}
+      addFavorite={() => addFavorite(searchResults)}
       removeFavorite={removeFavorite}
-      isFavorite={favorites.some((fav) => fav.pokemon === val.pokemon)}
+      isFavorite={favorites.some((fav) => fav.pokemon === searchResults.pokemon)}
       />
-    ))
     }
-
-
  </div>
   )
 

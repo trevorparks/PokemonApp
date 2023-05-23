@@ -3,24 +3,25 @@ const baseURL = `https://pokeapi.co/api/v2/`;
 
 export default async function getResponse(searchString) {
     const response = await fetch(baseURL + searchString);
-    console.log(baseURL + searchString);
+    console.log(searchString);
     
     if(!response.ok) {
         throw new Error(`HTTP error! status ${response.status}`)
     }
     const data = await response.json();
-
-    return data.map((val) => ({
-        abilities: val.abilities,
-        forms: val.forms,
-        game_indices: val.game_indices,
-        moves: val.moves,
-        species: val.species,
-        sprites: val.sprites,
-        stats: val.stats,
-        types: val.types
-    })
-    );
+    
+    if (searchString.includes('pokemon')) {
+        return {
+            abilities: data.abilities,
+            forms: data.forms,
+            game_indices: data.game_indices,
+            moves: data.moves,
+            species: data.species,
+            sprites: data.sprites,
+            stats: data.stats,
+            types: data.types
+        };
+    }
 }
 
 //pokemon/ = stats about specific abilities, moves, etc
