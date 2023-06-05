@@ -1,13 +1,170 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+/* base styles */
+body{
+  background-color: #FF0000;
+}
+* {
+  font-family: Arial, Helvetica, sans-serif;
+    color: yellow;
+    text-shadow:
+    -1px -1px 0 blue,  
+    1px -1px 0 blue,
+    -1px 1px 0 blue,
+    1px 1px 0 blue;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Fredoka One";
+  
+}
+nav {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid yellow;
+  text-decoration: none;
+  font-size: 25px;
+  justify-content: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-decoration: none;
 }
+/* .navbar .link {
+  margin-left: auto;
+} */
+.navbar li {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  color: #f1356d;
+  float: left;
+}
+.navbar a:hover {
+  color: #f1356d;
+}
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.search-container{
+  display: grid;
+  grid-template-rows: 3/3;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 100px;
+  grid-gap: 20px;
+}
+
+.response-display{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 20px;
+  text-align: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.response-item{
+  display: grid;
+  grid-template-columns: repeat(3, 0.01fr);
+  grid-auto-rows: minmax(20px, auto);
+  grid-gap: 2px;
+ 
+}
+
+
+.sprite {
+  width: 500px;
+  height: 500px;
+}
+
+
+  .pokeball-container {
+    width: 400px;
+    height: 400px;
+    background: red;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px #000;
+    border: 2px solid #000;
+    display: flex;
+    animation: pokeball-spin 5s linear infinite;
+}
+
+.pokeball-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  text-align: center;
+  z-index: 1;
+}
+
+.pokeball-container:before,
+.pokeball-container:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    left: 0;
+}
+
+.pokeball-container:before {
+    top: 0;
+    background: white;
+}
+
+.pokeball-container:after {
+    bottom: 0;
+    background: red;
+}
+
+.pokeball-container > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid #000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px #000;
+}
+.pokeball-container:hover {
+  transform: translateY(-10%); /* Move up when hovered */
+}
+
+.fav-button {
+ font-size: 50px;
+}
+.fav-button-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  width: 100%;
+}
+
+/* @keyframes pokeball-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */

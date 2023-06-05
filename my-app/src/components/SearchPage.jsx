@@ -4,6 +4,8 @@ import { useQuery } from 'react-query';
 import { useSearchContext } from '../context/SearchContext.jsx';
 import { useFavoritesContext } from '../context/FavoritesContext.jsx';
 import ResponseDisplay from "../components/ResponseDisplay.jsx"
+import '../index.css';
+
 
 
 
@@ -31,10 +33,10 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
 })
 
   return (
-    <div>
+    <div class="search-container">
     <h1>Search Page</h1>
     <form>
-    <label>Search for Everything Pokemon</label>
+    <label>Search for Everything Pokemon</label> <br />
     <select data-testid = "searchType"
   value= {searchType}
   onChange={(e) => setSearchType(e.target.value)}
@@ -68,21 +70,19 @@ const { isLoading, error, isSuccess } = useQuery(["getResponse", url], ()  => ge
     </form>
     {isLoading && <p>Loading...</p>}
     {error && <p>An error has occured: {error.message}</p>}
-    {isSuccess && searchType == 'pokemon' &&
+    {isSuccess && 
+    /* searchType == 'pokemon' && */
       <ResponseDisplay
       name={searchTerm}
       {...searchResults}
-      // url={val.url}
-      // title={val.title}
-      // gif_id={val.gif_id}
       addFavorite={() => addFavorite(searchResults)}
       removeFavorite={removeFavorite}
       isFavorite={favorites.some((fav) => fav.pokemon === searchResults.pokemon)}
       />
     }
-    {isSuccess && searchType == 'pokemon-species' &&
+    {/* {isSuccess && searchType == 'pokemon-species' &&
       <ResponseDisplay1/>
-    }
+    } */}
  </div>
   )
 
