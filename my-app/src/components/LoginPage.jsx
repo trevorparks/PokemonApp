@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useUserContext } from '../context/UserContext';
 
 
@@ -27,7 +27,9 @@ const LoginPage = () => {
           disabled={username.length < 4 || password.length < 4}
           onClick={(e) => {
             e.preventDefault();
-            setUser({username});
+            setUser({ username });
+            console.log(username);
+            console.log(password);
           }}
           data-testid="button"
         >

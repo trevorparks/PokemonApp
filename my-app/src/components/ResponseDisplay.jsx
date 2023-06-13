@@ -53,10 +53,10 @@ const ResponseDisplay = ({ name, abilities, forms, game_indices, moves, species,
            
         </div>
         <div class="fav-button-container">
-         { !isFavorite &&(<button class="fav-button" onClick={() => addFavorite()}>
+         { !isFavorite &&(<button class="fav-button" onClick={() => addFavorite(name, abilities, forms, game_indices, moves, species, sprites, stats, types )}>
          Add Favorite
      </button>)}
-     { isFavorite && (<button class="fav-button"  onClick={() => removeFavorite()}>
+     { isFavorite && (<button class="fav-button"  onClick={() => removeFavorite(name, abilities, forms, game_indices, moves, species, sprites, stats, types )}>
          Remove Favorite
      </button>) }
      </div>
